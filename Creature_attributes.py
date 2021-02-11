@@ -1,11 +1,51 @@
 class Player_character:
-    def __init__(self, name, player_class, health_points, attack, defense):
-        self.name          = name
-        self.player_class  = player_class
+    def __init__(self, ability_scores,
+                 name,
+                 player_class,
+                 health_points,
+                 attack,
+                 defense):
+        self.ability_scores = ability_scores
+        self.name = name
+        self.player_class = player_class
         self.health_points = health_points
-        self.attack        = attack
-        self.defense       = defense
+        self.attack = attack
+        self.defense = defense
         
+    def update_scores(self):
+        print(f'''Ability Scores:
+            STR: {self.ability_scores[0]}
+            DEX: {self.ability_scores[1]}
+            CON: {self.ability_scores[2]}
+            INT: {self.ability_scores[3]}
+            WIS: {self.ability_scores[4]}
+            CHA: {self.ability_scores[5]}''')
+        update = input("Update ability score? Y/N ")
+        if update == "Y":
+            select_score = input('''Which score should be updated?
+                                STR/DEX/CON/INT/WIS/CHA''')
+            if select_score == 'STR':
+                STR = input('Enter score ')
+                self.ability_scores[0] = int(STR)
+            elif select_score == 'DEX':
+                DEX = input('Enter score ')
+                self.ability_scores[1] = int(DEX)
+            elif select_score == 'CON':
+                CON = input('Enter score ')
+                self.ability_scores[2] = int(CON)
+            elif select_score == 'INT':
+                INT = input('Enter score ')
+                self.ability_scores[3] = int(INT)
+            elif select_score == 'WIS':
+                WIS = input('Enter score ')
+                self.ability_scores[4] = int(WIS)
+            elif select_score == 'CHA':
+                CHA = input('Enter score ')
+                self.ability_scores[5] = int(CHA)
+        else:
+            pass
+        return self.ability_scores
+    
     def Character_name(self):
         print("Greetings, mighty " + self.name +"!")
 
