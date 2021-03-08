@@ -1,3 +1,4 @@
+# Creates a player character.
 class Player_character:
     def __init__(self, ability_scores,
                  name,
@@ -11,7 +12,8 @@ class Player_character:
         self.health_points = health_points
         self.attack = attack
         self.defense = defense
-        
+
+ # Updates the character's ability score of choice.       
     def update_scores(self):
         print(f'''Ability Scores:
             STR: {self.ability_scores[0]}
@@ -45,17 +47,20 @@ class Player_character:
         else:
             pass
         return self.ability_scores
-    
+
+# Inserts the character's name into a greeting.
     def Character_name(self):
         print("Greetings, mighty " + self.name +"!")
 
+# Rolls for a character's attack.
     def Character_attack(self):
         import random
         result = int(random.randrange(1,20) + self.attack)
         print(self.name + " attacks!")
         print(result)
         return result
-    
+
+# Checks character's defense stat against the result of an attack to determine outcome.
     def Character_defense(self, result, weapon_damage):
         if result >= self.defense:
             print(self.name + " is hit!")
@@ -73,8 +78,15 @@ class Weapon:
 
     def Weapon_damage(self):
         import random
-        damage = int(random.randrange(1,self.max_damage))
+        damage = int(random.randrange(1, self.max_damage))
         return damage
+
+# Rolls initiative using the character's dexterity modifier.
+    def Character_initative(self):
+        import random
+        result = int(random.randrange(1,20)) + int((self.ability_scores[1]-10)/2)
+        return result
+
 
 class Monster:
     def __init__(self, name, monster_type, health_points, attack, defense):
